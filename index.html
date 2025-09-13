@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🏠 Hostel Management System</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hostel Management System</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
+  <div class="container">
     <h1>🏠 Hostel Management System</h1>
-  </header>
 
-  <main>
-    <section class="form-section">
+    <!-- Login Section -->
+    <div id="loginSection">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Student Section -->
+    <div id="studentSection" class="hidden">
       <h2>Submit Complaint</h2>
       <form id="complaintForm">
-        <input type="text" id="studentName" placeholder="Enter your name" required>
-        <input type="text" id="roomNo" placeholder="Enter your room number" required>
-
-        <select id="block" required>
-          <option value="" disabled selected>Select Block</option>
-          <option value="A">Block A</option>
-          <option value="B">Block B</option>
-          <option value="C">Block C</option>
-          <option value="D">Block D</option>
-        </select>
-
-        <select id="complaintType">
-          <option value="" disabled selected>Select Complaint Type</option>
-          <option value="Fan">Fan</option>
-          <option value="Light">Light</option>
-          <option value="Water">Water</option>
-          <option value="Washroom">Washroom</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <input type="text" id="customComplaint" placeholder="If Other, type here">
-
-        <textarea id="complaintDetails" placeholder="Enter complaint details" required></textarea>
-        
+        <input type="text" id="roomNo" placeholder="Room Number" required />
+        <input type="text" id="block" placeholder="Hostel Block" required />
+        <textarea id="complaintText" placeholder="Enter your complaint..." required></textarea>
         <button type="submit">Submit Complaint</button>
       </form>
-    </section>
 
-    <section class="table-section">
-      <h2>My Complaints</h2>
-      <table id="complaintsTable">
+      <h3>My Complaints</h3>
+      <table id="studentComplaintsTable">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Room No</th>
+            <th>Room</th>
             <th>Block</th>
-            <th>Complaint Type</th>
-            <th>Details</th>
+            <th>Complaint</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-    </section>
-  </main>
+    </div>
+
+    <!-- Warden Section -->
+    <div id="wardenSection" class="hidden">
+      <h2>All Complaints</h2>
+      <table id="wardenComplaintsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Room</th>
+            <th>Block</th>
+            <th>Complaint</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
