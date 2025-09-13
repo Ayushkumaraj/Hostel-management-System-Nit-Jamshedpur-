@@ -1,72 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hostel Management System</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 font-sans">
-<header class="bg-blue-600 text-white text-2xl font-bold text-center p-4 shadow-md">
-  Hostel Management System
-</header>
-<div class="max-w-5xl mx-auto mt-6 px-4" id="app">
-  <div id="loginDiv" class="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto">
-    <h2 class="text-xl font-semibold mb-4 text-center">Login</h2>
-    <form id="loginForm" class="space-y-3">
-      <input type="text" id="userId" placeholder="User ID" class="w-full border rounded p-2" required>
-      <input type="password" id="password" placeholder="Password" class="w-full border rounded p-2" required>
-      <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">Login</button>
-    </form>
-    <p class="mt-4 text-gray-500 text-sm">Student: S123 / student123</p>
-    <p class="text-gray-500 text-sm">Warden: W001 / warden123</p>
-  </div>
-  <div id="studentDiv" class="hidden">
-    <div class="flex border-b border-gray-300 mt-4">
-      <button class="tab px-4 py-2 font-semibold border-b-2 border-blue-600 text-blue-600 focus:outline-none" data-tab="submit">Submit Complaint</button>
-      <button class="tab px-4 py-2 font-semibold text-gray-500 focus:outline-none" data-tab="status">My Complaints</button>
+<body>
+  <header>
+    <h1>🏠 Hostel Management System</h1>
+  </header>
+
+  <main>
+    <!-- Login Section -->
+    <div class="container" id="login-section">
+      <h2>Login</h2>
+      <input type="text" id="userId" placeholder="User ID">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
     </div>
-    <div id="submit" class="tab-content mt-4">
-      <form id="complaintForm" class="bg-white shadow-md rounded-lg p-4 space-y-3">
-        <input type="text" id="room" placeholder="Room Number" class="w-full border rounded p-2" required>
-        <select id="type" class="w-full border rounded p-2" required>
-          <option value="">Select Complaint Type</option>
-          <option value="Fan">Fan Issue</option>
-          <option value="Washroom">Washroom Cleanliness</option>
-          <option value="Electricity">Electricity Issue</option>
-          <option value="Water">Water Supply</option>
-          <option value="Other">Other</option>
-        </select>
-        <textarea id="desc" rows="3" placeholder="Description" class="w-full border rounded p-2" required></textarea>
-        <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">Submit</button>
-      </form>
+
+    <!-- Student Section -->
+    <div class="container" id="student-section" style="display:none;">
+      <h2>Submit Complaint</h2>
+      <textarea id="complaintText" placeholder="Enter your complaint..."></textarea>
+      <button onclick="submitComplaint()">Submit Complaint</button>
+
+      <h2>My Complaints</h2>
+      <table id="studentComplaints">
+        <thead>
+          <tr><th>ID</th><th>Complaint</th><th>Status</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <div id="status" class="tab-content hidden mt-4 space-y-4">
-      <div id="studentCards"></div>
+
+    <!-- Warden Section -->
+    <div class="container" id="warden-section" style="display:none;">
+      <h2>All Complaints</h2>
+      <table id="allComplaints">
+        <thead>
+          <tr><th>ID</th><th>Complaint</th><th>Status</th><th>Action</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-  </div>
-  <div id="wardenDiv" class="hidden mt-4">
-    <h2 class="text-xl font-semibold mb-4">All Complaints</h2>
-    <div class="flex flex-wrap gap-3 mb-4">
-      <select id="filterType" class="border rounded p-2">
-        <option value="">Filter by Type</option>
-        <option value="Fan">Fan Issue</option>
-        <option value="Washroom">Washroom Cleanliness</option>
-        <option value="Electricity">Electricity Issue</option>
-        <option value="Water">Water Supply</option>
-        <option value="Other">Other</option>
-      </select>
-      <select id="filterStatus" class="border rounded p-2">
-        <option value="">Filter by Status</option>
-        <option value="Pending">Pending</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Resolved">Resolved</option>
-      </select>
-      <input type="text" id="searchInput" placeholder="Search by Student ID or Room" class="border rounded p-2 flex-1">
-    </div>
-    <div id="wardenCards" class="space-y-4"></div>
-  </div>
-</div>
-<script src="script.js"></script>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
