@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Hostel Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Hostel Management System - Login</h1>
+    <input type="text" id="loginId" placeholder="Enter ID">
+    <input type="password" id="loginPassword" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <p id="loginError" class="error"></p>
+  </div>
+
+  <script>
+    const students = {
+      "2024UGPI001": "student123",
+      "2024UGPI002": "student123",
+      "2024UGME001": "student123",
+      "2024UGME002": "student123"
+    };
+
+    const warden = { "W001": "warden123" };
+
+    function login() {
+      const id = document.getElementById("loginId").value;
+      const pass = document.getElementById("loginPassword").value;
+      const error = document.getElementById("loginError");
+
+      if ((students[id] && students[id] === pass) || (warden[id] && warden[id] === pass)) {
+        localStorage.setItem('currentUser', id);
+        window.location.href = 'complaint.html';
+      } else {
+        error.textContent = "Invalid ID or Password!";
+      }
+    }
+  </script>
+</body>
+</html>
