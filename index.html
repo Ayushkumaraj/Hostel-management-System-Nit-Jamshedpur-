@@ -1,84 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hostel Management — Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Management System</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <h1>Hostel Management System</h1>
-      <p class="sub">Student complaints & warden dashboard</p>
-    </div>
-  </header>
+  <div id="app">
+    <!-- Login Page -->
+    <div id="loginPage" class="page">
+      <h1>Hostel Management System</h1>
+      <div class="card">
+        <h2>Login</h2>
+        <input type="text" id="loginId" placeholder="Enter ID">
+        <input type="password" id="loginPassword" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+        <p id="loginError" class="error"></p>
+      </div>
+    </div>
 
-  <main class="wrap main-grid">
+    <!-- Student Page -->
+    <div id="studentPage" class="page hidden">
+      <h1>Welcome Student</h1>
+      <div class="card">
+        <h2>Submit Complaint</h2>
+        <input type="text" id="studentName" placeholder="Your Name">
+        <input type="text" id="studentRoom" placeholder="Room No">
+        <select id="studentFloor">
+          <option value="Ground">Ground Floor</option>
+          <option value="1st">1st Floor</option>
+          <option value="2nd">2nd Floor</option>
+        </select>
+        <select id="complaintType">
+          <option value="Fan">Fan Issue</option>
+          <option value="Washroom">Washroom Cleanliness</option>
+          <option value="Water">Water Issue</option>
+          <option value="Other">Other</option>
+        </select>
+        <textarea id="complaintText" placeholder="Write complaint here"></textarea>
+        <button onclick="submitComplaint()">Submit</button>
+      </div>
 
-    <!-- Left column: Login / Student form -->
-    <section class="card" id="panel-left">
-      <div id="login-card">
-        <h2>Sign in</h2>
-        <p class="hint">Student IDs: <code>2024UGPI001</code>, <code>2024UGPI002</code>, <code>2024UGME001</code> etc. — password: <strong>student123</strong></p>
-        <div class="field"><input id="userId" placeholder="User ID" /></div>
-        <div class="field"><input id="password" type="password" placeholder="Password" /></div>
-        <div class="actions">
-          <button id="btnLogin" class="btn btn-primary" onclick="login()">Login</button>
-        </div>
-        <p id="loginError" class="error"></p>
-      </div>
+      <div class="card">
+        <h2>My Complaints</h2>
+        <table id="studentComplaints">
+          <tr>
+            <th>Name</th>
+            <th>Room</th>
+            <th>Floor</th>
+            <th>Type</th>
+            <th>Complaint</th>
+            <th>Status</th>
+          </tr>
+        </table>
+      </div>
+      <button onclick="logout()">Logout</button>
+    </div>
 
-      <div id="student-card" class="hidden">
-        <h2>Submit Complaint</h2>
-        <form id="complaintForm" onsubmit="handleSubmit(event)">
-          <div class="field"><input id="studentName" placeholder="Your name" required /></div>
-          <div class="field small"><input id="roomNo" placeholder="Room No" required /></div>
-          <div class="field small"><select id="block" required>
-            <option value="">Select Block</option><option>A</option><option>B</option><option>C</option>
-          </select></div>
-          <div class="field">
-            <select id="complaintType" required>
-              <option value="">Select type</option>
-              <option>Fan</option><option>Light</option><option>Water</option><option>Washroom</option><option>Other</option>
-            </select>
-          </div>
-          <div class="field"><input id="manualType" placeholder="If Other, type here" /></div>
-          <div class="field"><textarea id="complaintDetails" rows="4" placeholder="Describe the issue" required></textarea></div>
-          <div class="actions"><button type="submit" class="btn btn-primary">Submit Complaint</button></div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Right column: Complaints table / Warden controls -->
-    <section class="card" id="panel-right">
-      <div id="student-view" class="hidden">
-        <h2>My Complaints</h2>
-        <div class="table-wrap"><table id="studentTable"><thead><tr><th>ID</th><th>Type</th><th>Details</th><th>Status</th></tr></thead><tbody></tbody></table></div>
-      </div>
-
-      <div id="warden-view" class="hidden">
-        <h2>Warden — All Complaints</h2>
-        <div class="toolbar">
-          <input id="search" placeholder="Search name / room" />
-          <select id="filterStatus"><option value="">All statuses</option><option>Pending</option><option>In Progress</option><option>Resolved</option></select>
-        </div>
-        <div class="table-wrap">
-          <table id="wardenTable">
-            <thead><tr><th>ID</th><th>Name</th><th>Room</th><th>Block</th><th>Type</th><th>Details</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap">Built for demo • Static frontend prototype</div>
-  </footer>
-
-  <script src="script.js"></script>
+    <!-- Warden Page -->
+    <div id="wardenPage" class="page hidden">
+      <h1>Welcome Warden</h1>
+      <div class="card">
+        <h2>All Complaints</h2>
+        <table id="wardenComplaints">
+          <tr>
+            <th>Name</th>
+            <th>Room</th>
+            <th>Floor</th>
+            <th>Type</th>
+            <th>Complaint</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </table>
+      </div>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
