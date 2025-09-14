@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaints - Hostel Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Submit Complaint</h1>
+    <input type="text" id="studentName" placeholder="Your Name">
+    <input type="text" id="studentRoom" placeholder="Room No">
+    <select id="studentFloor">
+      <option value="Ground">Ground Floor</option>
+      <option value="1st">1st Floor</option>
+      <option value="2nd">2nd Floor</option>
+    </select>
+    <select id="complaintType">
+      <option value="Fan">Fan Issue</option>
+      <option value="Washroom">Washroom Cleanliness</option>
+      <option value="Water">Water Issue</option>
+      <option value="Other">Other</option>
+    </select>
+    <textarea id="complaintText" placeholder="Write complaint here"></textarea>
+    <button onclick="submitComplaint()">Submit</button>
+
+    <h2>My Complaints</h2>
+    <table id="studentComplaints">
+      <tr>
+        <th>Name</th>
+        <th>Room</th>
+        <th>Floor</th>
+        <th>Type</th>
+        <th>Complaint</th>
+        <th>Status</th>
+      </tr>
+    </table>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <section class="motto">
+    <h2>Making Hostel Life at NIT Jamshedpur Full of Joy and Memories to Remember</h2>
+  </section>
+
+  <section class="team">
+    <h2>Our Amazing Team</h2>
+    <div class="team-cards">
+      <div class="card">
+        <h4>Ayush (PI007)</h4>
+        <p>Frontend Developer</p>
+      </div>
+      <div class="card">
+        <h4>Gaurav (PI008)</h4>
+        <p>Backend Developer</p>
+      </div>
+      <div class="card">
+        <h4>Suhani (PI009)</h4>
+        <p>UI/UX Designer</p>
+      </div>
+      <div class="card">
+        <h4>Ramakant (PI010)</h4>
+        <p>Frontend Developer</p>
+      </div>
+      <div class="card">
+        <h4>Aditya (PI011)</h4>
+        <p>Database Manager</p>
+      </div>
+      <div class="card">
+        <h4>Masoom (PI013)</h4>
+        <p>QA & Testing</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
