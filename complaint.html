@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Issue Management System NIT JSR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Hostel Issue Management System NIT JSR</h1>
+  <p class="motto">Making Hostel Life full of Joy and Memories to Remember</p>
+
+  <div id="studentPage" class="page hidden">
+    <div class="card">
+      <h2>Submit Complaint</h2>
+      <input type="text" id="studentName" placeholder="Your Name">
+      <input type="text" id="studentRoom" placeholder="Room No">
+      <select id="studentFloor">
+        <option value="Ground">Ground Floor</option>
+        <option value="1st">1st Floor</option>
+        <option value="2nd">2nd Floor</option>
+      </select>
+      <select id="complaintType">
+        <option value="Fan">Fan Issue</option>
+        <option value="Washroom">Washroom Cleanliness</option>
+        <option value="Water">Water Issue</option>
+        <option value="Other">Other</option>
+      </select>
+      <textarea id="complaintText" placeholder="Write complaint here"></textarea>
+      <button onclick="submitComplaint()">Submit</button>
+    </div>
+
+    <div class="card">
+      <h2>My Complaints</h2>
+      <table id="studentComplaints">
+        <tr>
+          <th>Name</th>
+          <th>Room</th>
+          <th>Floor</th>
+          <th>Type</th>
+          <th>Complaint</th>
+          <th>Status</th>
+        </tr>
+      </table>
+    </div>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div id="wardenPage" class="page hidden">
+    <div class="card">
+      <h2>All Complaints</h2>
+      <table id="wardenComplaints">
+        <tr>
+          <th>Name</th>
+          <th>Room</th>
+          <th>Floor</th>
+          <th>Type</th>
+          <th>Complaint</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </table>
+    </div>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
